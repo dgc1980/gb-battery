@@ -169,6 +169,9 @@ void main(void)
         n_rtc_h += 24;
         n_rtc_dl -= 1;
     }
+    if ( n_rtc_dl < 0 ) {
+        n_rtc_dl += 128;
+    }
 
 
     // check if previous second does not match the current second
