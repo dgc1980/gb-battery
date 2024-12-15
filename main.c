@@ -88,7 +88,7 @@ void main(void)
   gotogxy(5,17);
   gprintf("by dgc1980");
   gotogxy(4,16);
-  gprintf("version 0.2");
+  gprintf("version 0.3");
 
 
 
