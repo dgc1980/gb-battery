@@ -197,13 +197,13 @@ void main(void)
 
     // print current RTC values   
     gotogxy(4,5);
-    gprintf("Days   : %2d  ", n_rtc_dl);
+    gprintf("Days   : %d  ", n_rtc_dl);
     gotogxy(4,6);
-    gprintf("Hours  : %2d  ", n_rtc_h);
+    gprintf("Hours  : %d  ", n_rtc_h);
     gotogxy(4,7);
-    gprintf("Minutes: %2d  ", n_rtc_m);
+    gprintf("Minutes: %d  ", n_rtc_m);
     gotogxy(4,8);
-    gprintf("Seconds: %2i  ", n_rtc_s);
+    gprintf("Seconds: %d  ", n_rtc_s);
 
   }
 
