@@ -134,6 +134,8 @@ void main(void)
   int n_rtc_s;
   int p_rtc_s = 0;
 
+  int last_saved = 0;
+
   gotogxy(3,0);
   gprintf("GB Battery Test");
 
@@ -178,11 +180,14 @@ void main(void)
     if ( n_rtc_s != p_rtc_s ) {
       // save values to SRAM/FRAM every 10 seconds
       if ( n_rtc_s == 0 || n_rtc_s == 10 || n_rtc_s == 20 || n_rtc_s == 30 || n_rtc_s == 40 || n_rtc_s == 50 ) {
-        sd[0] = n_rtc_dl;
-        sh[0] = n_rtc_h;
-        sm[0] = n_rtc_m;
-        ss[0] = n_rtc_s;
-        saved[0] = 's'; 
+        if ( last_saved != n_rtc_s ) {
+          sd[0] = n_rtc_dl;
+          sh[0] = n_rtc_h;
+          sm[0] = n_rtc_m;
+          ss[0] = n_rtc_s;
+          saved[0] = 's'; 
+          last_saved = n_rtc_s;
+        }
       }
       p_rtc_s = n_rtc_s;
     }
@@ -192,13 +197,13 @@ void main(void)
 
     // print current RTC values   
     gotogxy(4,5);
-    gprintf("Days   : %d  ", n_rtc_dl);
+    gprintf("Days   : %2d  ", n_rtc_dl);
     gotogxy(4,6);
-    gprintf("Hours  : %d  ", n_rtc_h);
+    gprintf("Hours  : %2d  ", n_rtc_h);
     gotogxy(4,7);
-    gprintf("Minutes: %d  ", n_rtc_m);
+    gprintf("Minutes: %2d  ", n_rtc_m);
     gotogxy(4,8);
-    gprintf("Seconds: %d  ", n_rtc_s);
+    gprintf("Seconds: %2i  ", n_rtc_s);
 
   }
 
